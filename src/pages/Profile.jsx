@@ -16,12 +16,10 @@ function Profile() {
     useEffect(()=>{
         setIsLoading(true)
         axios.post('http://localhost:3500/profileInfo',{id}).then((res=>{
-            console.log(res.data)
             setList([...res.data])
             setIsLoading(false)
         })).catch(e=>{
             setIsLoading(false)
-            console.log(e)
         })
     },[params])
     const downloadData=list.map(row=>{

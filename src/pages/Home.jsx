@@ -35,7 +35,6 @@ const fetchIsbnData=()=>{
     axios.post('http://localhost:3500/getIsbnData',{isbn}).then((res=>{
         setList([...res.data])
     })).catch(e=>{
-        console.log(e)
         setError(true)
 
     })

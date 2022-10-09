@@ -10,7 +10,6 @@ import NavBar from './components/NavBar';
 
 function App() {
   const [list,setList]=useState([])
-  console.log(list)
   useEffect(()=>{
     axios.get('http://localhost:3500/allitems').then(res=>{
       setList([...res.data])

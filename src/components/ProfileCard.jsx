@@ -25,7 +25,6 @@ const card = (
 );
 
 export default function ProfileCard(props) {
-    console.log(props.details.username[0])
   return (
     <div style={{padding:'72px 72px 72px 72px'}}>
     <Box sx={{ minWidth: 275 }}>
