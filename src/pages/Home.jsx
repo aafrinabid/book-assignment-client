@@ -42,7 +42,7 @@ const fetchIsbnData=()=>{
 
 }
   return (
-    <div >
+    <div style={{padding:'51px'}}>
         <div style={{display:'flex',justifyContent:'center',padding:'10px',paddingTop:'100px'}}>
         <TextField onChange={isbnChanger} value={isbnState} id="outlined-basic" label="search by ISBN" variant="outlined" />
         <Button onClick={fetchIsbnData} disabled={isbnState.length>0?false:true}>search</Button>
