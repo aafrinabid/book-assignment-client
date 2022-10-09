@@ -4,6 +4,8 @@ import React, { useEffect ,useState} from 'react'
 import { useParams } from 'react-router-dom'
 import DetailsTable from '../components/DetailsTable'
 import ProfileCard from '../components/ProfileCard'
+import CsvDownload from 'react-json-to-csv'
+
 
 function Profile() {
     const params=useParams()
@@ -22,9 +24,13 @@ function Profile() {
             console.log(e)
         })
     },[params])
+    const downloadData=list.map(row=>{
+        return {...row,username:row.username.join(','),authors:row.authors.join(',')}
+    })
   return (
     <div>
         {!isLoading &&<ProfileCard details={list[0]} mail={id}/>}
+        {!isLoading && <CsvDownload data={downloadData} filename={`${list[0].username[0]}.csv`}>Download all Data</CsvDownload>}
         {!isLoading && <DetailsTable rows={list} postion={true}/>}
     </div>
   )

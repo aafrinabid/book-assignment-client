@@ -14,6 +14,7 @@ function App() {
   useEffect(()=>{
     axios.get('http://localhost:3500/allitems').then(res=>{
       setList([...res.data])
+    }).catch(e=>{
     })
 
   },[])
