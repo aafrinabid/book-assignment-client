@@ -12,9 +12,12 @@ function App() {
   const [list,setList]=useState([])
   const [loading,setLoading]=useState(false)
   useEffect(()=>{
+    setLoading(true)
     axios.get('https://book-server-csv.herokuapp.com/allitems').then(res=>{
       setList([...res.data])
+      setLoading(false)
     }).catch(e=>{
+      setLoading(false)
     })
 
   },[])
@@ -23,7 +26,7 @@ function App() {
       <NavBar />
       <Switch>
       <Route path='/' exact >
-        <Home rows={list} loading={loading} setLoading={setLoading} setList={setList}/>
+        <Home rows={list} loading={loading}  setList={setList}/>
       </Route>
 
       <Route path='/user/:id'>

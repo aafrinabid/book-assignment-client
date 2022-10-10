@@ -5,7 +5,7 @@ import CsvDownload from 'react-json-to-csv'
 import axios from 'axios'
 
 
-function Home({rows,setList,loading,setLoading}) {
+function Home({rows,setList,loading}) {
     const[ sortState,setSortState]=useState(false)
     const [isbnState,setIsbnState]=useState('')
     const [oldState,setOldState]=useState([])
