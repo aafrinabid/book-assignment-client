@@ -15,7 +15,7 @@ function Profile() {
    
     useEffect(()=>{
         setIsLoading(true)
-        axios.post('http://localhost:3500/profileInfo',{id}).then((res=>{
+        axios.post('https://book-server-csv.herokuapp.com/profileInfo',{id}).then((res=>{
             setList([...res.data])
             setIsLoading(false)
         })).catch(e=>{

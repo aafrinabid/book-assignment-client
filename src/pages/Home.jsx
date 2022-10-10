@@ -5,7 +5,7 @@ import CsvDownload from 'react-json-to-csv'
 import axios from 'axios'
 
 
-function Home({rows,setList}) {
+function Home({rows,setList,loading,setLoading}) {
     const[ sortState,setSortState]=useState(false)
     const [isbnState,setIsbnState]=useState('')
     const [oldState,setOldState]=useState([])
@@ -32,7 +32,7 @@ const sortList=(state)=>{
 
 const fetchIsbnData=()=>{
     const isbn=isbnState
-    axios.post('http://localhost:3500/getIsbnData',{isbn}).then((res=>{
+    axios.post('https://book-server-csv.herokuapp.com/getIsbnData',{isbn}).then((res=>{
         setList([...res.data])
     })).catch(e=>{
         setError(true)
@@ -50,7 +50,8 @@ const fetchIsbnData=()=>{
         <Button onClick={sortList.bind(null,sortState)}>{!sortState?'Sort by titile':'unsort'}</Button>
         <Button><CsvDownload data={downloadData} filename={'all-data.csv'}>Download all Data</CsvDownload></Button>
         </div>
-        <DetailsTable rows={rows}/>
+       {!loading && <DetailsTable rows={rows}/>}
+       {loading && <h1>LOADING...</h1>}
     </div>
   )
 }

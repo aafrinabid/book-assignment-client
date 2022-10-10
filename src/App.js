@@ -10,8 +10,9 @@ import NavBar from './components/NavBar';
 
 function App() {
   const [list,setList]=useState([])
+  const [loading,setLoading]=useState(false)
   useEffect(()=>{
-    axios.get('http://localhost:3500/allitems').then(res=>{
+    axios.get('https://book-server-csv.herokuapp.com/allitems').then(res=>{
       setList([...res.data])
     }).catch(e=>{
     })
@@ -22,7 +23,7 @@ function App() {
       <NavBar />
       <Switch>
       <Route path='/' exact >
-        <Home rows={list} setList={setList}/>
+        <Home rows={list} loading={loading} setLoading={setLoading} setList={setList}/>
       </Route>
 
       <Route path='/user/:id'>
